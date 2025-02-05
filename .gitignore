@@ -1,0 +1,23 @@
+# Xcode
+xcuserdata/
+*.xcuserstate
+project.xcworkspace/
+DerivedData/
+
+# Build
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# CocoaPods
+Pods/
+
+# Mac
+.DS_Store
+.DS_Store?
+._*
+
+# Temp files
+*.swp
+*~.nib
