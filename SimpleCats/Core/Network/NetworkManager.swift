@@ -8,6 +8,7 @@
 import Foundation
 
 class NetworkManager: NetworkProtocol {
+    // URLSession work for simple api request, for more complex requests we can use a package like Alamofire
     private let session: URLSession
     
     init(session: URLSession = .shared) {
@@ -35,7 +36,7 @@ class NetworkManager: NetworkProtocol {
         request.allHTTPHeaderFields = endpoint.headers
         
         let (data, response) = try await session.data(for: request)
-        
+        print("response: \(String(describing: response))")
         guard let httpResponse = response as? HTTPURLResponse else {
             throw NetworkError.invalidResponse
         }

@@ -12,4 +12,5 @@ protocol APIEndpointProtocol {
     var path: String { get }
     var headers: [String: String] { get }
     var url: URL? { get }
+    var queryItems: [URLQueryItem]? { get }
 }

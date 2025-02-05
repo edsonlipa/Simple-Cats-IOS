@@ -1,0 +1,69 @@
+//
+//  CatListViewModel.swift
+//  SimpleCats
+//
+//  Created by Edson Lipa Urbina on 5/02/25.
+//
+
+import Foundation
+
+class CatListViewModel: ObservableObject {
+    @Published private(set) var images: [CatImage] = []
+    @Published private(set) var isLoading = false
+    @Published var error: Error?
+    
+    private let networkManager: NetworkProtocol
+    private var currentPage = 0
+    private var canLoadMore = true
+    
+    init(networkManager: NetworkProtocol = NetworkManager()) {
+        self.networkManager = networkManager
+    }
+    func loadMoreIfNeeded(currentItem: CatImage?) {
+        guard let currentItem = currentItem,
+              let lastItem = images.last,
+              currentItem.id == lastItem.id,
+              !isLoading,
+              canLoadMore else {
+            return
+        }
+        
+        Task { await loadMore() }
+    }
+    
+    @MainActor
+    func refresh() async {
+        currentPage = 0
+        images = []
+        canLoadMore = true
+        await loadMore()
+    }
+    
+    @MainActor
+    private func loadMore() async {
+        guard !isLoading, canLoadMore else { return }
+        
+        isLoading = true
+        
+        do {
+
+            let newImages: [CatImage] = try await fetchImages(page: currentPage)
+            
+            if newImages.isEmpty {
+                canLoadMore = false
+            } else {
+                currentPage += 1
+                images.append(contentsOf: newImages)
+            }
+        } catch {
+            self.error = error
+        }
+        
+        isLoading = false
+    }
+    
+    // here we can add filters if nedded
+    private func fetchImages(page: Int = 0) async throws -> [CatImage] {
+        return try await networkManager.request(TheCatAPI.images(limit: 10, page: page))
+    }
+}

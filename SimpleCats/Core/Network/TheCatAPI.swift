@@ -8,8 +8,6 @@
 import Foundation
 
 enum TheCatAPI {
-//    case breeds
-//    case breed(id: String)
     case images(limit: Int = 10, page: Int = 0)
     case imageDetail(id: String)
 }
@@ -32,6 +30,9 @@ extension TheCatAPI: APIEndpointProtocol {
         components.scheme = "https"
         components.host = baseURL
         components.path = path
+        if let queryItems = queryItems {
+            components.queryItems = queryItems
+        }
         return components.url
     }
     
@@ -51,4 +52,23 @@ extension TheCatAPI: APIEndpointProtocol {
             return nil
         }
     }
+}
+
+// Models
+struct CatImage: Codable, Identifiable {
+    let id: String
+    let url: String
+    let width: Int
+    let height: Int
+    let breeds: [CatBreed]?
+}
+
+struct CatBreed: Codable {
+    let id: String
+    let name: String
+    let description: String
+    let temperament: String
+    let origin: String
+    let lifeSpan: String
+    let wikipediaUrl: String?
 }
