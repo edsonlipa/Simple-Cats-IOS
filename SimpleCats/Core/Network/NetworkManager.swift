@@ -50,7 +50,9 @@ class NetworkManager: NetworkProtocol {
 }
 
 // Network Errors
-enum NetworkError: Error {
+enum NetworkError: Error, Identifiable {
+    var id: String { "\(self)" }
+    
     case invalidURL
     case requestFailed
     case invalidResponse

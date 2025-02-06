@@ -30,6 +30,9 @@ struct CatListView: View {
                         .listRowSeparator(.hidden)
                 }
             }
+            .alert(item: $viewModel.error) { error in
+                Alert(title: Text("Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
+            }
             .listStyle(.plain)
             .task {
                 await viewModel.onAppear()

@@ -12,5 +12,11 @@ struct CatBreed: Codable, Hashable {
     let temperament: String
     let origin: String
     let lifeSpan: String
+    let weight: Weight
     let wikipediaUrl: String?
+}
+
+struct Weight: Codable, Hashable {
+    let imperial: String
+    let metric: String
 }

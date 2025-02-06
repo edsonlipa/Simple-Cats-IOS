@@ -10,7 +10,7 @@ import Foundation
 class CatListViewModel: ObservableObject {
     @Published private(set) var images: [CatImage] = []
     @Published private(set) var isLoading = false
-    @Published var error: Error?
+    @Published var error: NetworkError?
     
     private let networkManager: NetworkProtocol
     private var currentPage = 0
@@ -53,7 +53,9 @@ class CatListViewModel: ObservableObject {
             currentPage += 1
             images.append(contentsOf: newImages)
         } catch {
-            self.error = error
+            if let networkError = error as? NetworkError {
+                self.error = networkError
+            }
         }
         
         isLoading = false
