@@ -46,7 +46,8 @@ extension TheCatAPI: APIEndpointProtocol {
         case .images(let limit, let page):
             return [
                 URLQueryItem(name: "limit", value: "\(limit)"),
-                URLQueryItem(name: "page", value: "\(page)")
+                URLQueryItem(name: "page", value: "\(page)"),
+                URLQueryItem(name: "has_breeds", value: "1")
             ]
         default:
             return nil
@@ -60,10 +61,10 @@ struct CatImage: Codable, Identifiable {
     let url: String
     let width: Int
     let height: Int
-    let breeds: [CatBreed]?
+    let breeds: [CatBreed]
 }
 
-struct CatBreed: Codable {
+struct CatBreed: Codable, Hashable {
     let id: String
     let name: String
     let description: String

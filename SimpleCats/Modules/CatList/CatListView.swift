@@ -14,11 +14,11 @@ struct CatListView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(viewModel.images, id: \.id) { image in
+                ForEach(viewModel.images, id: \.id) { catImage in
                     NavigationLink(destination: {
-                        EmptyView()
+                        CatDetailView(cat: catImage)
                     }, label: {
-                        CatImageCell(image: image)
+                        CatImageCell(image: catImage)
                     })
                     .buttonStyle(.plain)
                     .listRowSeparator(.hidden)
@@ -54,7 +54,7 @@ struct CatListView: View {
                 .scaledToFit()
                 .overlay(alignment: .bottomLeading) {
                     HStack {
-                        Text("\(image.id)")
+                        Text("\(image.breeds.first?.name ?? "Unknown")")
                             .foregroundColor(.white)
                             .padding(.all, 4)
                     }
