@@ -12,21 +12,31 @@ struct CatListView: View {
     @StateObject private var viewModel = CatListViewModel()
     
     var body: some View {
-        List {
-            ForEach(viewModel.images, id: \.id) { image in
-                CatImageCell(image: image)
+        NavigationStack {
+            List {
+                ForEach(viewModel.images, id: \.id) { image in
+                    NavigationLink(destination: {
+                        EmptyView()
+                    }, label: {
+                        CatImageCell(image: image)
+                    })
+                    .buttonStyle(.plain)
                     .listRowSeparator(.hidden)
+                }
+                
+                if viewModel.isLoading {
+                    ProgressView()
+                        .frame(maxWidth: .infinity)
+                        .listRowSeparator(.hidden)
+                }
             }
-            
-            if viewModel.isLoading {
-                ProgressView()
-                    .frame(maxWidth: .infinity)
-                    .listRowSeparator(.hidden)
+            .listStyle(.plain)
+            .task {
+                await viewModel.onAppear()
             }
-        }
-        .listStyle(.plain)
-        .task {
-            await viewModel.refresh()
+            .refreshable {
+                await viewModel.refresh()
+            }
         }
     }
     
@@ -38,10 +48,9 @@ struct CatListView: View {
                     Image("cat-placeholder")
                         .resizable()
                         .scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
                 .resizable()
-                .roundCorner(radius: .heightFraction(0.05))
                 .scaledToFit()
                 .overlay(alignment: .bottomLeading) {
                     HStack {
@@ -50,10 +59,14 @@ struct CatListView: View {
                             .padding(.all, 4)
                     }
                     .background(Color.black.opacity(0.5))
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
                     .padding()
                 }
-                .shadow(radius: 5)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .shadow(radius: 10)
+                .onAppear {
+                    viewModel.loadMoreIfNeeded(currentItem: image)
+                }
         }
     }
 }

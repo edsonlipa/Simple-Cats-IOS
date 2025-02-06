@@ -14,19 +14,17 @@ class CatListViewModel: ObservableObject {
     
     private let networkManager: NetworkProtocol
     private var currentPage = 0
-    private var canLoadMore = true
     
     init(networkManager: NetworkProtocol = NetworkManager()) {
         self.networkManager = networkManager
     }
+    
     func loadMoreIfNeeded(currentItem: CatImage?) {
         guard let currentItem = currentItem,
               let lastItem = images.last,
               currentItem.id == lastItem.id,
-              !isLoading,
-              canLoadMore else {
-            return
-        }
+              !isLoading
+        else { return }
         
         Task { await loadMore() }
     }
@@ -35,26 +33,25 @@ class CatListViewModel: ObservableObject {
     func refresh() async {
         currentPage = 0
         images = []
-        canLoadMore = true
+        await loadMore()
+    }
+    
+    func onAppear() async {
+        guard images.isEmpty else { return }
+        
         await loadMore()
     }
     
     @MainActor
     private func loadMore() async {
-        guard !isLoading, canLoadMore else { return }
+        guard !isLoading else { return }
         
         isLoading = true
         
         do {
-
             let newImages: [CatImage] = try await fetchImages(page: currentPage)
-            
-            if newImages.isEmpty {
-                canLoadMore = false
-            } else {
-                currentPage += 1
-                images.append(contentsOf: newImages)
-            }
+            currentPage += 1
+            images.append(contentsOf: newImages)
         } catch {
             self.error = error
         }
