@@ -54,7 +54,3 @@ extension TheCatAPI: APIEndpointProtocol {
         }
     }
 }
-
-// Models
-
-
