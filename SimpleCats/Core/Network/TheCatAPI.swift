@@ -56,20 +56,5 @@ extension TheCatAPI: APIEndpointProtocol {
 }
 
 // Models
-struct CatImage: Codable, Identifiable {
-    let id: String
-    let url: String
-    let width: Int
-    let height: Int
-    let breeds: [CatBreed]
-}
 
-struct CatBreed: Codable, Hashable {
-    let id: String
-    let name: String
-    let description: String
-    let temperament: String
-    let origin: String
-    let lifeSpan: String
-    let wikipediaUrl: String?
-}
+
