@@ -28,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B6F63AE2D55055700B5BAA2 /* SimpleCats.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SimpleCats.xctestplan; sourceTree = "<group>"; };
 		4B985E3D2D52FF1600B86EDB /* SimpleCats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleCats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B985E4E2D52FF1700B86EDB /* SimpleCatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleCatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B985E582D52FF1700B86EDB /* SimpleCatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleCatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				4B985E3F2D52FF1600B86EDB /* SimpleCats */,
+				4B6F63AE2D55055700B5BAA2 /* SimpleCats.xctestplan */,
 				4B985E512D52FF1700B86EDB /* SimpleCatsTests */,
 				4B985E5B2D52FF1700B86EDB /* SimpleCatsUITests */,
 				4B6F63902D5460E400B5BAA2 /* Frameworks */,

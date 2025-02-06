@@ -8,10 +8,10 @@
 import Foundation
 
 class NetworkManager: NetworkProtocol {
-    // URLSession work for simple api request, for more complex requests we can use a package like Alamofire
-    private let session: URLSession
+    private let session: NetworkClientProtocol
     
-    init(session: URLSession = .shared) {
+    // URLSession work for simple api request, for more complex requests we can use a package like Alamofire
+    init(session: NetworkClientProtocol = URLSession.shared) {
         self.session = session
     }
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol APIEndpointProtocol {
+public protocol APIEndpointProtocol {
     var baseURL: String { get }
     var path: String { get }
     var headers: [String: String] { get }
