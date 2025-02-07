@@ -11,7 +11,11 @@ An iOS app that showcases cat images and their breed information using The Cat A
 - Swift 5.9 or later
 
 ## Installation
-1. Unzip project
+1. Clone the repository:
+```bash
+git clone https://github.com/edsonlipa/Simple-Cats-IOS.git
+cd SimpleCats
+```
 2. Open `SimpleCats.xcodeproj`
 3. Build and run the project using Xcode's built-in simulator or a connected iOS device.
 
