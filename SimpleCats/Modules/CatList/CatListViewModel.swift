@@ -55,6 +55,8 @@ class CatListViewModel: ObservableObject {
         } catch {
             if let networkError = error as? NetworkError {
                 self.error = networkError
+            } else {
+                self.error = .requestFailed
             }
         }
         

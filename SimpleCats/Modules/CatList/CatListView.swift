@@ -13,6 +13,8 @@ struct CatListView: View {
     
     var body: some View {
         NavigationStack {
+            Text("Cats List")
+                
             List {
                 ForEach(viewModel.images, id: \.id) { catImage in
                     NavigationLink(destination: {
@@ -22,6 +24,8 @@ struct CatListView: View {
                     })
                     .buttonStyle(.plain)
                     .listRowSeparator(.hidden)
+                    .accessibilityIdentifier(catImage.id)
+                    .id(catImage.id)
                 }
                 
                 if viewModel.isLoading {
@@ -70,6 +74,8 @@ struct CatListView: View {
                 .onAppear {
                     viewModel.loadMoreIfNeeded(currentItem: image)
                 }
+                .accessibilityIdentifier(image.id)
+                
         }
     }
 }

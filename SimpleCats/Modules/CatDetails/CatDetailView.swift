@@ -37,7 +37,7 @@ struct CatDetailView: View {
                 }
             }
         }
-        .navigationTitle(Text("The Cat: \(viewModel.cat.id)"))
+        .navigationTitle(Text("Cat Details"))
         .padding(16)
     }
 }
