@@ -72,6 +72,13 @@ xcodebuild test -scheme SimpleCats -destination 'platform=iOS Simulator,name=iPh
    - Pagination for better performance
    - Smooth scrolling experience
    - Memory efficient
+   
+7. **Localization**
+   - Centralized string management
+   - Support for English and Spanish languages
+   - System-provided localizations for common terms
+   - String interpolation support with format specifiers
+   - Easy maintenance and scalability for new languages
 
 ### Key Components
 
@@ -95,6 +102,10 @@ xcodebuild test -scheme SimpleCats -destination 'platform=iOS Simulator,name=iPh
 SimpleCats/
 ├── SimpleCats/
 │   ├── Core/
+│   │   ├── Common/
+│   │   │   ├── ImageName.swift
+│   │   │   ├── LocalizedStrings.swift
+│   │   │   └── SystemIconName.swift
 │   │   └── Network/
 │   │       ├── Models/
 │   │       │   ├── CatBreed.swift
@@ -105,13 +116,15 @@ SimpleCats/
 │   │           ├── APIEndpointProtocol.swift
 │   │           ├── NetworkClientProtocol.swift
 │   │           └── NetworkProtocol.swift
-│   └── Modules/
-│       ├── CatDetails/
-│       │   ├── CatDetailView.swift
-│       │   └── CatDetailViewModel.swift
-│       └── CatList/
-│           ├── CatListView.swift
-│           └── CatListViewModel.swift
+│   ├── Modules/
+│   │   ├── CatDetails/
+│   │   │   ├── CatDetailView.swift
+│   │   │   └── CatDetailViewModel.swift
+│   │   └── CatList/
+│   │       ├── CatListView.swift
+│   │       └── CatListViewModel.swift
+│   └-- Resources/
+|       └-- Localizable.xcstrings
 ├── SimpleCatsTests/
 │   ├── Mocks/
 │   │   └── NetworkManagerTests.swift
