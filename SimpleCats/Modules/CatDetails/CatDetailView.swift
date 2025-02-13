@@ -37,7 +37,7 @@ struct CatDetailView: View {
                 }
             }
         }
-        .navigationTitle(Text("Cat Details"))
+        .navigationTitle(Text(LocalizedStrings.CatDetail.title))
         .padding(16)
     }
 }
@@ -56,13 +56,13 @@ struct CatBreedView: View {
                     .font(.largeTitle)
                     .bold()
                 
-                Text("Origin: \(breed.origin)")
+                Text(LocalizedStrings.CatDetail.originWithCountry(breed.origin))
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("About")
+                Text(LocalizedStrings.CatDetail.about)
                     .font(.headline)
                 
                 Text(breed.description)
@@ -70,7 +70,7 @@ struct CatBreedView: View {
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("Temperament")
+                Text(LocalizedStrings.CatDetail.temperament)
                     .font(.headline)
                 
                 Text(breed.temperament)
@@ -78,14 +78,14 @@ struct CatBreedView: View {
             }
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("Details")
+                Text(LocalizedStrings.CatDetail.details)
                     .font(.headline)
                 
                 HStack(alignment: .top) {
-                    Text("Life Span")
+                    Text(LocalizedStrings.CatDetail.lifeSpan)
                         .foregroundColor(.secondary)
                         .frame(width: 100, alignment: .leading)
-                    Text("\(breed.lifeSpan) years")
+                    Text(LocalizedStrings.CatDetail.lifeSpan(with: breed.lifeSpan))
                 }
             }
             
@@ -93,7 +93,7 @@ struct CatBreedView: View {
                let url = URL(string: wikipediaUrl) {
                 Link(destination: url) {
                     HStack {
-                        Text("Read more on Wikipedia")
+                        Text(LocalizedStrings.CatDetail.readMore)
                         Image(systemName: "link")
                     }
                     .foregroundColor(.blue)

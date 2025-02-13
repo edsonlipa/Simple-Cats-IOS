@@ -13,7 +13,7 @@ struct CatListView: View {
     
     var body: some View {
         NavigationStack {
-            Text("Cats List")
+            Text(LocalizedStrings.CatList.title)
                 
             List {
                 ForEach(viewModel.images, id: \.id) { catImage in
@@ -35,7 +35,7 @@ struct CatListView: View {
                 }
             }
             .alert(item: $viewModel.error) { error in
-                Alert(title: Text("Error"), message: Text(error.localizedDescription), dismissButton: .default(Text("OK")))
+                Alert(title: Text(LocalizedStrings.Common.error), message: Text(error.localizedDescription), dismissButton: .default(Text(LocalizedStrings.Common.ok)))
             }
             .listStyle(.plain)
             .task {
@@ -61,7 +61,7 @@ struct CatListView: View {
                 .scaledToFit()
                 .overlay(alignment: .bottomLeading) {
                     HStack {
-                        Text("\(image.breeds.first?.name ?? "Unknown")")
+                        Text(image.breeds.first?.name ?? LocalizedStrings.Common.unknown)
                             .foregroundColor(.white)
                             .padding(.all, 4)
                     }
