@@ -52,7 +52,7 @@ struct CatListView: View {
         if let url = URL(string: image.url) {
             KFImage(url)
                 .placeholder {
-                    Image("cat-placeholder")
+                    Image(ImageName.catPlaceholder)
                         .resizable()
                         .scaledToFit()
                         .clipShape(RoundedRectangle(cornerRadius: 16))

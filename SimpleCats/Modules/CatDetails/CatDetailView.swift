@@ -20,7 +20,7 @@ struct CatDetailView: View {
             if let url = URL(string: viewModel.cat.url)  {
                 KFImage(url)
                     .placeholder {
-                        Image("cat-placeholder")
+                        Image(ImageName.catPlaceholder)
                             .resizable()
                             .scaledToFit()
                             .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -94,7 +94,7 @@ struct CatBreedView: View {
                 Link(destination: url) {
                     HStack {
                         Text(LocalizedStrings.CatDetail.readMore)
-                        Image(systemName: "link")
+                        Image(systemName: SystemIconName.link)
                     }
                     .foregroundColor(.blue)
                 }
