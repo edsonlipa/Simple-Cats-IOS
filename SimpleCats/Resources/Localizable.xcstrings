@@ -8,6 +8,12 @@
             "state" : "translated",
             "value" : "%@ years"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ años"
+          }
         }
       }
     },
@@ -17,6 +23,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "About"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de"
           }
         }
       }
@@ -28,6 +40,12 @@
             "state" : "translated",
             "value" : "Details"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalles"
+          }
         }
       }
     },
@@ -38,11 +56,14 @@
             "state" : "translated",
             "value" : "Life Span"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo de vida"
+          }
         }
       }
-    },
-    "catDetail.origin" : {
-
     },
     "catDetail.originWithCountry %@" : {
       "localizations" : {
@@ -50,6 +71,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Origin: %@"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Origen: %@"
           }
         }
       }
@@ -61,6 +88,12 @@
             "state" : "translated",
             "value" : "Read more on Wikipedia"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leer mas en Wikipedia"
+          }
         }
       }
     },
@@ -71,6 +104,12 @@
             "state" : "translated",
             "value" : "Temperament"
           }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperamento"
+          }
         }
       }
     },
@@ -80,6 +119,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cat Details"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalles del Gato"
           }
         }
       }
@@ -92,22 +137,14 @@
             "state" : "translated",
             "value" : "Cat List"
           }
-        }
-      }
-    },
-    "catList.unknownBreed" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unknown"
+            "value" : "Lista de Gatos"
           }
         }
       }
-    },
-    "Hello, world!" : {
-
     }
   },
   "version" : "1.0"

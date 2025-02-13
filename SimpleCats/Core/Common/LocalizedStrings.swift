@@ -18,7 +18,6 @@ enum LocalizedStrings {
         static var temperament: String { NSLocalizedString("catDetail.temperament", comment: "") }
         static var details: String { NSLocalizedString("catDetail.details", comment: "") }
         static var lifeSpan: String { NSLocalizedString("catDetail.lifeSpan", comment: "") }
-        static var origin: String { NSLocalizedString("catDetail.origin", comment: "") }
         static var readMore: String { NSLocalizedString("catDetail.readMore", comment: "") }
         
         static func lifeSpan(with years: String) -> String {
